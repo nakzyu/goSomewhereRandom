@@ -1,13 +1,16 @@
+import { COUNTRIES } from "../utilities/constants";
+import { getNearestPanorama, getRandomLatLng } from "../utilities/coords";
+
 export default class GoogleMap {
   constructor() {
     this.init();
   }
 
   private init() {
+    const coords = getRandomLatLng(COUNTRIES[0].coordsBoundingBox);
     const map = new google.maps.Map(document.getElementById("nav"), {
-      zoom: 14,
-      center: new google.maps.LatLng(54.976, -2.021),
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      zoom: 8,
+      center: coords,
     });
 
     const panorama = new google.maps.StreetViewPanorama(
@@ -16,10 +19,9 @@ export default class GoogleMap {
 
     map.setStreetView(panorama);
 
-    console.log(map);
-
     const streetView = map.getStreetView();
+    const sv = new google.maps.StreetViewService();
 
-    streetView.setPosition(new google.maps.LatLng(54.976, -2.021));
+    getNearestPanorama(coords, sv, streetView, 1);
   }
 }
