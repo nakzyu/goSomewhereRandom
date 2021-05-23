@@ -4,12 +4,12 @@
   display: flex;
 }
 
-#navigator {
+#nav {
   width: 50%;
   height: 100%;
 }
 
-#panorama {
+#pano {
   width: 50%;
   height: 100%;
 }

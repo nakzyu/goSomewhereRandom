@@ -1,17 +1,16 @@
-import NavigatorMap from "./components/NavigatorMap";
-import PanoramaMap from "./components/PanoramaMap";
-import GoogleMap from "./components/PanoramaMap";
+import GoogleMap from "./components/GoogleMap";
 import MapService from "./services/MapService";
-import { Maps } from "./types/MapConfigs";
-import Props from "./types/Props";
+import Loader from "./utilities/mapLoader";
 
 export default class App {
+  private mapService: MapService;
+
   constructor($elem: HTMLElement) {
-    const props: Props = {
-      $elem,
-      services: { mapService: new MapService() },
-    };
-    new NavigatorMap(props, { id: Maps.NAVIGATOR });
-    new PanoramaMap(props, { id: Maps.PANORAMA });
+    this.init();
+  }
+
+  async init() {
+    await Loader.load();
+    new GoogleMap();
   }
 }

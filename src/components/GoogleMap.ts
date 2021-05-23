@@ -1,24 +1,25 @@
-import Component from "./GoogleMap";
-import Loader from "../utilities/mapLoader";
-import $ from "../utilities/selector";
-import Props from "../types/Props";
-import MapConfigs from "../types/MapConfigs";
-
 export default class GoogleMap {
-  public $map: HTMLElement;
-  public props: Props;
-  public mapConfigs: MapConfigs;
-
-  constructor(props: Props, mapConfigs: MapConfigs) {
-    this.props = props;
-    this.mapConfigs = mapConfigs;
-    this.$map = this.makeTemplate();
-    props.$elem.appendChild(this.$map);
+  constructor() {
+    this.init();
   }
 
-  private makeTemplate(): HTMLElement {
-    const $div = document.createElement("div");
-    $div.id = this.mapConfigs.id;
-    return $div;
+  private init() {
+    const map = new google.maps.Map(document.getElementById("nav"), {
+      zoom: 14,
+      center: new google.maps.LatLng(54.976, -2.021),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    });
+
+    const panorama = new google.maps.StreetViewPanorama(
+      document.getElementById("pano")
+    );
+
+    map.setStreetView(panorama);
+
+    console.log(map);
+
+    const streetView = map.getStreetView();
+
+    streetView.setPosition(new google.maps.LatLng(54.976, -2.021));
   }
 }
