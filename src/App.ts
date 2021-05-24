@@ -25,7 +25,7 @@ export default class App {
 
   private async init() {
     await Loader.load();
-    this.store.map = new GoogleMap().init().map;
+    this.store.map = new GoogleMap().map;
     this.store.streetViewService = new google.maps.StreetViewService();
 
     setGoogleMapToRandomCoords(getRandomMapMeta(), this.store);

@@ -11,18 +11,19 @@ export default class Element {
     this.create();
   }
 
-  private create(): Element {
+  private create(): void {
     const $createdElem = document.createElement(this.options.tagName);
-    delete this.options.tagName;
     this.applyOptions($createdElem, this.options);
     this.$parentElem.appendChild($createdElem);
     this.$createdElem = $createdElem;
-    return this;
   }
 
-  private applyOptions = ($target: HTMLElement, options: Options): void => {
+  private applyOptions($target: HTMLElement, options: Options): void {
+    // tagName => freezed property, applying it causes error
+    delete this.options.tagName;
+
     for (const [property, value] of Object.entries(options)) {
       $target[property] = value;
     }
-  };
+  }
 }

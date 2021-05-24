@@ -2,9 +2,11 @@ import $ from "../utilities/selector";
 export default class GoogleMap {
   public map: google.maps.Map;
 
-  constructor() {}
+  constructor() {
+    this.init();
+  }
 
-  public init(): GoogleMap {
+  private init() {
     const map = new google.maps.Map($("#nav"), {
       zoom: 8,
     });
@@ -14,7 +16,5 @@ export default class GoogleMap {
     const panorama = new google.maps.StreetViewPanorama($("#pano"));
 
     map.setStreetView(panorama);
-
-    return this;
   }
 }
