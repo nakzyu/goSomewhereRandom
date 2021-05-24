@@ -7,12 +7,13 @@ import {
   setGoogleMapToRandomCoords,
 } from "./utilities/coords";
 import { COUNTRIES } from "./utilities/constants";
-import Button from "./components/Button";
 import $ from "./utilities/selector";
 import { MapMetadata } from "./types/Map";
+import { Store } from "./types/Store";
+import Element from "./components/Element";
 
 export default class App {
-  private store = {
+  private store: Store = {
     map: <google.maps.Map>null,
     streetViewService: <google.maps.StreetViewService>null,
     meta: <MapMetadata>null,
@@ -29,10 +30,20 @@ export default class App {
 
     setGoogleMapToRandomCoords(getRandomMapMeta(), this.store);
 
-    new Button($(".panel"))
-      .make("new Button")
-      .$button.addEventListener("click", () =>
-        setGoogleMapToRandomCoords(getRandomMapMeta(), this.store)
-      );
+    new Element($(".panel"), {
+      tagName: "button",
+      className: "button",
+      innerText: "global",
+    }).$createdElem.addEventListener("click", () =>
+      setGoogleMapToRandomCoords(getRandomMapMeta(), this.store)
+    );
+
+    new Element($(".panel"), {
+      tagName: "button",
+      className: "button",
+      innerText: "in here",
+    }).$createdElem.addEventListener("click", () =>
+      setGoogleMapToRandomCoords(this.store.meta, this.store)
+    );
   }
 }

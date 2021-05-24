@@ -7,9 +7,9 @@ export type MapMetadata = {
   /**
    * [lng1, lat1, lng2, lat2]
    *
-   * lng1, lat1 = upper left coords of countires
+   * lng1, lat1 = upper left corner coords of country
    *
-   * lng2, lat2 = bottom right coords of contires
+   * lng2, lat2 = bottom right corner coords of country
    */
   coordsBoundingBox: number[];
 };

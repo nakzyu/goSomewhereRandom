@@ -6,6 +6,7 @@
 // };
 
 import { MapMetadata } from "../types/Map";
+import { Store } from "../types/Store";
 import { COUNTRIES } from "./constants";
 
 export const getRandomLatLng = (
@@ -32,20 +33,17 @@ export const getNearestPanorama = (
 
 export const setGoogleMapToRandomCoords = (
   mapMetaData: MapMetadata,
-  {
-    map,
-    streetViewService,
-    meta,
-  }: {
-    map: google.maps.Map;
-    streetViewService: google.maps.StreetViewService;
-    meta: MapMetadata;
-  }
+  store: Store
 ): void => {
-  meta = mapMetaData;
+  store.meta = mapMetaData;
   const latLng = getRandomLatLng(mapMetaData.coordsBoundingBox);
-  map.setCenter(latLng);
-  getNearestPanorama(latLng, streetViewService, map.getStreetView(), 1);
+  store.map.setCenter(latLng);
+  getNearestPanorama(
+    latLng,
+    store.streetViewService,
+    store.map.getStreetView(),
+    1
+  );
 };
 
 export const getRandomMapMeta = (): MapMetadata =>
