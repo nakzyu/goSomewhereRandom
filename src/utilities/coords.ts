@@ -5,6 +5,9 @@
 //   return `https://maps.google.com/?q=${coords.lat},${coords.lng}&ll=${coords.lat},${coords.lng}&z=${zoom}`;
 // };
 
+import { MapMetadata } from "../types/Map";
+import { COUNTRIES } from "./constants";
+
 export const getRandomLatLng = (
   coordsBoundingBox: number[]
 ): google.maps.LatLngLiteral => ({
@@ -26,6 +29,27 @@ export const getNearestPanorama = (
     svp.setPosition(data.location.latLng);
   });
 };
+
+export const setGoogleMapToRandomCoords = (
+  mapMetaData: MapMetadata,
+  {
+    map,
+    streetViewService,
+    meta,
+  }: {
+    map: google.maps.Map;
+    streetViewService: google.maps.StreetViewService;
+    meta: MapMetadata;
+  }
+): void => {
+  meta = mapMetaData;
+  const latLng = getRandomLatLng(mapMetaData.coordsBoundingBox);
+  map.setCenter(latLng);
+  getNearestPanorama(latLng, streetViewService, map.getStreetView(), 1);
+};
+
+export const getRandomMapMeta = (): MapMetadata =>
+  COUNTRIES[Math.floor(Math.random() * COUNTRIES.length)];
 
 const getRandomNumberBetweenRange = (from: number, to: number): number => {
   const difs = to - from;

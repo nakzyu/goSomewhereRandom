@@ -1,27 +1,20 @@
-import { COUNTRIES } from "../utilities/constants";
-import { getNearestPanorama, getRandomLatLng } from "../utilities/coords";
-
+import $ from "../utilities/selector";
 export default class GoogleMap {
-  constructor() {
-    this.init();
-  }
+  public map: google.maps.Map;
 
-  private init() {
-    const coords = getRandomLatLng(COUNTRIES[0].coordsBoundingBox);
-    const map = new google.maps.Map(document.getElementById("nav"), {
+  constructor() {}
+
+  public init(): GoogleMap {
+    const map = new google.maps.Map($("#nav"), {
       zoom: 8,
-      center: coords,
     });
 
-    const panorama = new google.maps.StreetViewPanorama(
-      document.getElementById("pano")
-    );
+    this.map = map;
+
+    const panorama = new google.maps.StreetViewPanorama($("#pano"));
 
     map.setStreetView(panorama);
 
-    const streetView = map.getStreetView();
-    const sv = new google.maps.StreetViewService();
-
-    getNearestPanorama(coords, sv, streetView, 1);
+    return this;
   }
 }
