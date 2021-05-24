@@ -7,14 +7,10 @@ export default class GoogleMap {
   }
 
   private init() {
-    const map = new google.maps.Map($("#nav"), {
+    this.map = new google.maps.Map($("#nav"), {
       zoom: 8,
     });
-
-    this.map = map;
-
     const panorama = new google.maps.StreetViewPanorama($("#pano"));
-
-    map.setStreetView(panorama);
+    this.map.setStreetView(panorama);
   }
 }
