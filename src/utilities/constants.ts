@@ -1,6 +1,6 @@
 import { MapMetadata } from "../types/Map";
 
-export const COUNTRIES: MapMetadata[] = [
+export const COUNTRIES: ReadonlyArray<MapMetadata> = [
   {
     alpha2: "AF",
     name: "Afghanistan",

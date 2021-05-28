@@ -29,8 +29,8 @@ export default class Element {
     // tagName => freezed property, applying it causes error
     delete this.options.tagName;
 
-    for (const [property, value] of Object.entries(options)) {
+    Object.entries(options).forEach(([property, value]) => {
       $target[property] = value;
-    }
+    });
   }
 }

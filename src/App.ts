@@ -36,7 +36,7 @@ export default class App {
   private apppendElements(): void {
     const $panelDiv = $(".panel");
 
-    new SearchBar($panelDiv);
+    new SearchBar($panelDiv, this.store);
 
     new Element($panelDiv, {
       tagName: "button",
