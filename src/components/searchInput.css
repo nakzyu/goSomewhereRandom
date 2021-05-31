@@ -1,0 +1,23 @@
+.search_bar_input_wrapper {
+  display: flex;
+}
+
+.search_bar_input_wrapper:focus {
+  color: tomato;
+}
+.search_bar_input {
+  flex: 1;
+  border: none;
+}
+
+.search_bar_input:focus {
+  outline: none;
+}
+
+.search_bar_img {
+  background: white;
+  display: block;
+  object-fit: cover;
+  width: 10%;
+  height: 10%; /* set to 'auto' in IE11 to avoid distortions */
+}

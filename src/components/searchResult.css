@@ -1,0 +1,20 @@
+.search_bar_result {
+  background: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 20vh;
+  overflow: scroll;
+}
+
+.search_bar_result:hover {
+  cursor: pointer;
+}
+.search_bar_result_li {
+  display: flex;
+}
+
+.search_bar_result_li:hover {
+  background: #0633ff;
+  color: white;
+}
