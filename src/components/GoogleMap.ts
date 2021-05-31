@@ -1,3 +1,5 @@
+import "./googleMap.css";
+
 import $ from "../utilities/selector";
 export default class GoogleMap {
   public map: google.maps.Map;

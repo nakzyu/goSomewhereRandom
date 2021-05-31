@@ -1,4 +1,4 @@
-import Element from "./Element";
+import Element from "./element";
 
 export default class SearchInput {
   constructor($elem, onInputChanged) {

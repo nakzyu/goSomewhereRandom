@@ -27,6 +27,7 @@ export const getNearestPanorama = (
       getNearestPanorama(coords, svs, svp, (radius *= 10));
       return;
     }
+    console.log(data);
     svp.setPosition(data.location.latLng);
   });
 };

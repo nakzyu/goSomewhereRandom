@@ -1,5 +1,5 @@
 import { MapMetadata } from "../types/Map";
-import Element from "./Element";
+import Element from "./element";
 
 export default class SearchResult {
   private $ul: HTMLUListElement;

@@ -1,4 +1,4 @@
-import GoogleMap from "./components/GoogleMap";
+import GoogleMap from "./components/googleMap";
 import Loader from "./utilities/mapLoader";
 import {
   getNearestPanorama,
@@ -10,8 +10,9 @@ import { COUNTRIES } from "./utilities/constants";
 import $ from "./utilities/selector";
 import { MapMetadata } from "./types/Map";
 import { Store } from "./types/Store";
-import Element from "./components/Element";
-import SearchBar from "./components/SearchBar";
+import Element from "./components/element";
+import SearchBar from "./components/searchBar";
+import "./App.css";
 
 export default class App {
   private store: Store = {

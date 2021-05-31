@@ -2,9 +2,9 @@ import { MapMetadata } from "../types/Map";
 import { Store } from "../types/Store";
 import { COUNTRIES } from "../utilities/constants";
 import { setGoogleMapToRandomCoords } from "../utilities/coords";
-import Element from "./Element";
-import SearchInput from "./SearchInput";
-import SearchResult from "./SearchResult";
+import Element from "./element";
+import SearchInput from "./searchInput";
+import SearchResult from "./searchResult";
 
 export default class SearchBar {
   private $parentElem: HTMLElement;

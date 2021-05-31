@@ -1,6 +1,3 @@
-@import "./googleMap.css";
-@import "./searchBar.css";
-
 #app {
   width: 100%;
   height: 100%;
@@ -12,11 +9,4 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-.panel {
-  position: fixed;
-  z-index: 10;
-  width: 20vw;
-  height: 20vw;
 }
