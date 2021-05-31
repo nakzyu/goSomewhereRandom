@@ -6,23 +6,16 @@ import {
   getRandomMapMeta,
   setGoogleMapToRandomCoords,
 } from "./utilities/coords";
-import { COUNTRIES } from "./utilities/constants";
-import $ from "./utilities/selector";
 import { MapMetadata } from "./types/Map";
 import { Store } from "./types/Store";
-import Element from "./components/element";
-import SearchBar from "./components/searchBar";
-import "./App.css";
+import Panel from "./components/panel";
+import { store } from "./utilities/store";
 
 export default class App {
-  private store: Store = {
-    map: <google.maps.Map>null,
-    streetViewService: <google.maps.StreetViewService>null,
-    meta: <MapMetadata>null,
-  };
-
+  private store: Store;
   constructor() {
     this.init();
+    this.store = store;
   }
 
   private async init(): Promise<void> {
@@ -30,29 +23,6 @@ export default class App {
     this.store.map = new GoogleMap().map;
     this.store.streetViewService = new google.maps.StreetViewService();
     setGoogleMapToRandomCoords(getRandomMapMeta(), this.store);
-
-    this.apppendElements();
-  }
-
-  private apppendElements(): void {
-    const $panelDiv = $(".panel");
-
-    new SearchBar($panelDiv, this.store);
-
-    new Element($panelDiv, {
-      tagName: "button",
-      className: "button",
-      innerText: "global",
-    }).$elem.addEventListener("click", () =>
-      setGoogleMapToRandomCoords(getRandomMapMeta(), this.store)
-    );
-
-    new Element($panelDiv, {
-      tagName: "button",
-      className: "button",
-      innerText: "in country",
-    }).$elem.addEventListener("click", () =>
-      setGoogleMapToRandomCoords(this.store.meta, this.store)
-    );
+    new Panel();
   }
 }

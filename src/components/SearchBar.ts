@@ -2,6 +2,7 @@ import { MapMetadata } from "../types/Map";
 import { Store } from "../types/Store";
 import { COUNTRIES } from "../utilities/constants";
 import { setGoogleMapToRandomCoords } from "../utilities/coords";
+import { store } from "../utilities/store";
 import Element from "./element";
 import SearchInput from "./searchInput";
 import SearchResult from "./searchResult";
@@ -12,7 +13,7 @@ export default class SearchBar {
   private searchResult: SearchResult;
   private store: Store;
 
-  constructor($elem, store: Store) {
+  constructor($elem) {
     this.$parentElem = $elem;
     this.store = store;
     this.init();
@@ -23,9 +24,7 @@ export default class SearchBar {
       tagName: "div",
       className: "search_bar_wrapper",
     }).$elem;
-
     this.countries = this.mapCountriesNamesToSearch(COUNTRIES);
-
     new SearchInput($wrapper, this.onInputChanged.bind(this));
     this.searchResult = new SearchResult(
       $wrapper,
@@ -37,6 +36,11 @@ export default class SearchBar {
    *
    */
   private onInputChanged({ target }): void {
+    // if no character typed, return nothing
+    if (!target.value) {
+      this.searchResult.update([]);
+      return;
+    }
     this.searchResult.update(
       this.countries.filter(({ name }) => name.includes(target.value))
     );
@@ -44,7 +48,6 @@ export default class SearchBar {
 
   private onCountrySelected({ target }): void {
     if (target.tagName === "LI") {
-      console.log(target.innerText);
       const country = this.countries.find(
         ({ name }) => name == target.innerText
       );
