@@ -1,8 +1,12 @@
 .panel {
-  position: fixed;
   z-index: 10;
-  width: 20vw;
-  height: 20vw;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+}
+
+.button_wrapper {
+  display: flex;
 }
 
 .button {
@@ -11,6 +15,7 @@
   border-radius: 4px;
   text-align: center;
   padding: 15px 20px;
+  flex: 1;
 }
 
 .button:hover {

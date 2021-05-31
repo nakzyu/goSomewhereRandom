@@ -11,25 +11,22 @@ export default class Panel {
     this.init();
   }
 
-  init() {
+  private init(): void {
     const $panelDiv = $(".panel");
 
     new SearchBar($panelDiv);
 
-    genElem($panelDiv, {
+    const $buttonWrapper = genElem($panelDiv, {
+      tagName: "div",
+      className: "button_wrapper",
+    });
+
+    genElem($buttonWrapper, {
       tagName: "button",
       className: "button",
       innerText: "Go",
     }).addEventListener("click", () =>
       setGoogleMapToRandomCoords(getRandomMapMeta(), store)
-    );
-
-    genElem($panelDiv, {
-      tagName: "button",
-      className: "button",
-      innerText: "Go in Country",
-    }).addEventListener("click", () =>
-      setGoogleMapToRandomCoords(store.meta, store)
     );
   }
 }

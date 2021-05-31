@@ -7,6 +7,8 @@ import SearchInput from "./searchInput";
 import SearchResult from "./searchResult";
 import { genElem } from "../utilities/dom";
 
+import "./searchBar.css";
+
 export default class SearchBar {
   private $parentElem: HTMLElement;
   private countries: ReadonlyArray<MapMetadata>;
@@ -32,9 +34,6 @@ export default class SearchBar {
     );
   }
 
-  /*
-   *
-   */
   private onInputChanged({ target }): void {
     // if no character typed, return nothing
     if (!target.value) {

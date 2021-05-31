@@ -6,4 +6,5 @@ export type Options = {
   innerText?: string;
   className?: string;
   id?: string;
+  src?: string;
 };

@@ -1,7 +1,6 @@
 import { MapMetadata } from "../types/Map";
-import { genElem } from "../utilities/elemGenerator";
-import Element from "./element";
-
+import { genElem } from "../utilities/dom";
+import "./searchResult.css";
 export default class SearchResult {
   private $ul: HTMLUListElement;
 

@@ -1,5 +1,6 @@
 import "./googleMap.css";
 import { $ } from "../utilities/dom";
+
 export default class GoogleMap {
   public map: google.maps.Map;
 
@@ -7,7 +8,7 @@ export default class GoogleMap {
     this.init();
   }
 
-  private init() {
+  private init(): void {
     this.map = new google.maps.Map($("#nav"), {
       zoom: 8,
     });
