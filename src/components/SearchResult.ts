@@ -1,14 +1,15 @@
 import { MapMetadata } from "../types/Map";
+import { genElem } from "../utilities/elemGenerator";
 import Element from "./element";
 
 export default class SearchResult {
   private $ul: HTMLUListElement;
 
   constructor($elem, onCountrySelected) {
-    this.$ul = <HTMLUListElement>new Element($elem, {
+    this.$ul = <HTMLUListElement>genElem($elem, {
       tagName: "ul",
       className: "search_bar_result",
-    }).$elem;
+    });
 
     this.$ul.addEventListener("click", onCountrySelected);
   }

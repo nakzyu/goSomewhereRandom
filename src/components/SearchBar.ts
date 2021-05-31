@@ -3,9 +3,9 @@ import { Store } from "../types/Store";
 import { COUNTRIES } from "../utilities/constants";
 import { setGoogleMapToRandomCoords } from "../utilities/coords";
 import { store } from "../utilities/store";
-import Element from "./element";
 import SearchInput from "./searchInput";
 import SearchResult from "./searchResult";
+import { genElem } from "../utilities/dom";
 
 export default class SearchBar {
   private $parentElem: HTMLElement;
@@ -20,10 +20,10 @@ export default class SearchBar {
   }
 
   private init(): void {
-    const $wrapper = new Element(this.$parentElem, {
+    const $wrapper = genElem(this.$parentElem, {
       tagName: "div",
       className: "search_bar_wrapper",
-    }).$elem;
+    });
     this.countries = this.mapCountriesNamesToSearch(COUNTRIES);
     new SearchInput($wrapper, this.onInputChanged.bind(this));
     this.searchResult = new SearchResult(

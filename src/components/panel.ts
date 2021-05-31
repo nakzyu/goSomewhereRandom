@@ -1,14 +1,11 @@
-import { Store } from "../types/Store";
 import {
   getRandomMapMeta,
   setGoogleMapToRandomCoords,
 } from "../utilities/coords";
 import SearchBar from "./searchBar";
-import Element from "../components/element";
-import $ from "../utilities/selector";
 import "./panel.css";
 import { store } from "../utilities/store";
-
+import { $, genElem } from "../utilities/dom";
 export default class Panel {
   constructor() {
     this.init();
@@ -19,19 +16,19 @@ export default class Panel {
 
     new SearchBar($panelDiv);
 
-    new Element($panelDiv, {
+    genElem($panelDiv, {
       tagName: "button",
       className: "button",
-      innerText: "global",
-    }).$elem.addEventListener("click", () =>
+      innerText: "Go",
+    }).addEventListener("click", () =>
       setGoogleMapToRandomCoords(getRandomMapMeta(), store)
     );
 
-    new Element($panelDiv, {
+    genElem($panelDiv, {
       tagName: "button",
       className: "button",
-      innerText: "in country",
-    }).$elem.addEventListener("click", () =>
+      innerText: "Go in Country",
+    }).addEventListener("click", () =>
       setGoogleMapToRandomCoords(store.meta, store)
     );
   }
