@@ -12,20 +12,20 @@ export default class SearchInput {
   }
 
   private init() {
-    console.log("init");
     const $searchInputWrapper = genElem(this.$parentElem, {
       tagName: "div",
       className: "search_bar_input_wrapper",
-    });
-    const $searchImage = <HTMLImageElement>genElem($searchInputWrapper, {
-      tagName: "img",
-      className: "search_bar_img",
-      src: "./search.svg",
     });
 
     const $searchInput = <HTMLInputElement>genElem($searchInputWrapper, {
       tagName: "input",
       className: "search_bar_input",
+    });
+
+    <HTMLImageElement>genElem($searchInputWrapper, {
+      tagName: "img",
+      className: "search_bar_img",
+      src: "./search.svg",
     });
 
     $searchInput.addEventListener("keyup", this.onInputChanged);

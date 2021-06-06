@@ -11,6 +11,7 @@ import "./searchBar.css";
 
 export default class SearchBar {
   private $parentElem: HTMLElement;
+  private $curLocationDiv: HTMLElement;
   private countries: ReadonlyArray<MapMetadata>;
   private searchResult: SearchResult;
   private store: Store;
@@ -21,12 +22,21 @@ export default class SearchBar {
     this.init();
   }
 
-  private init(): void {
+  private async init(): Promise<void> {
     const $wrapper = genElem(this.$parentElem, {
       tagName: "div",
       className: "search_bar_wrapper",
     });
     this.countries = this.mapCountriesNamesToSearch(COUNTRIES);
+
+    console.log(this.store.map.getStreetView().getLocation());
+
+    this.$curLocationDiv = genElem($wrapper, {
+      tagName: "div",
+      innerText: "dsd",
+      className: "search_bar_cur_location",
+    });
+
     new SearchInput($wrapper, this.onInputChanged.bind(this));
     this.searchResult = new SearchResult(
       $wrapper,

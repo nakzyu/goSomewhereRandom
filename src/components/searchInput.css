@@ -20,4 +20,5 @@
   object-fit: cover;
   width: 10%;
   height: 10%; /* set to 'auto' in IE11 to avoid distortions */
+  padding: 5px;
 }

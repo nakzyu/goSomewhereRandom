@@ -1,4 +1,5 @@
 * {
+  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 #app {
@@ -25,4 +26,8 @@ input[type="reset"] {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+
+.disabled {
+  display: none;
 }

@@ -3,6 +3,8 @@
   display: flex;
   position: absolute;
   flex-direction: column;
+  padding: 10px;
+  background: white;
 }
 
 .button_wrapper {

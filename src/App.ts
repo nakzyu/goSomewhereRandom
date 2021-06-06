@@ -14,8 +14,8 @@ import { store } from "./utilities/store";
 export default class App {
   private store: Store;
   constructor() {
-    this.init();
     this.store = store;
+    this.init();
   }
 
   private async init(): Promise<void> {

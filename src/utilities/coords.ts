@@ -27,7 +27,6 @@ export const getNearestPanorama = (
       getNearestPanorama(coords, svs, svp, (radius *= 10));
       return;
     }
-    console.log(data);
     svp.setPosition(data.location.latLng);
   });
 };
@@ -39,6 +38,7 @@ export const setGoogleMapToRandomCoords = (
   store.meta = mapMetaData;
   const latLng = getRandomLatLng(mapMetaData.coordsBoundingBox);
   store.map.setCenter(latLng);
+
   getNearestPanorama(
     latLng,
     store.streetViewService,
