@@ -14,7 +14,5 @@ export default class GoogleMap {
     });
     const panorama = new google.maps.StreetViewPanorama($("#pano"));
     this.map.setStreetView(panorama);
-
-    console.log(this.map);
   }
 }

@@ -11,7 +11,6 @@ import "./searchBar.css";
 
 export default class SearchBar {
   private $parentElem: HTMLElement;
-  private $curLocationDiv: HTMLElement;
   private countries: ReadonlyArray<MapMetadata>;
   private searchResult: SearchResult;
   private store: Store;
@@ -29,11 +28,17 @@ export default class SearchBar {
     });
     this.countries = this.mapCountriesNamesToSearch(COUNTRIES);
 
-    console.log(this.store.map.getStreetView().getLocation());
+    const loc = await (<Promise<google.maps.StreetViewLocation>>(
+      new Promise((resolve) => {
+        setTimeout(() => {
+          return resolve(this.store.map.getStreetView().getLocation());
+        }, 2000);
+      })
+    ));
 
-    this.$curLocationDiv = genElem($wrapper, {
+    genElem($wrapper, {
       tagName: "div",
-      innerText: "dsd",
+      innerText: loc.shortDescription,
       className: "search_bar_cur_location",
     });
 
