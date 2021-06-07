@@ -3,7 +3,7 @@ import { genElem } from "../utilities/dom";
 import "./searchResult.css";
 export default function SearchResult(
   $elem: HTMLElement,
-  onCountrySelected
+  onCountrySelected: (event: MouseEvent) => void
 ): (countries: ReadonlyArray<MapMetadata>) => void {
   const $ul: HTMLUListElement = <HTMLUListElement>genElem($elem, {
     tagName: "ul",

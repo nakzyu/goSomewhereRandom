@@ -1,7 +1,10 @@
 import { genElem } from "../utilities/dom";
 import "./searchInput.css";
 
-export default function SearchInput($elem: HTMLElement, onInputChanged): void {
+export default function SearchInput(
+  $elem: HTMLElement,
+  onInputChanged: (event: KeyboardEvent) => void
+): void {
   const $parentElem: HTMLElement = $elem;
   const init = (): void => {
     const $searchInputWrapper = genElem($parentElem, {

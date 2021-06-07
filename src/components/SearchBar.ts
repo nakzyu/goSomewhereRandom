@@ -17,14 +17,16 @@ export default function SearchBar($elem: HTMLElement): void {
   let countries: ReadonlyArray<MapMetadata> = [];
   let updateSearchResult;
 
-  const onCountrySelected = ({ target }): void => {
+  const onCountrySelected = (event: MouseEvent): void => {
+    const target = event.target as HTMLLIElement;
     if (target.tagName === "LI") {
       const country = countries.find(({ name }) => name == target.innerText);
       setGoogleMapToRandomCoords((store.meta = country), store);
     }
   };
 
-  const onInputChanged = ({ target }): void => {
+  const onInputChanged = (event: KeyboardEvent): void => {
+    const target = event.target as HTMLInputElement;
     // if no character typed, return nothing
     if (!target.value) {
       updateSearchResult([]);
