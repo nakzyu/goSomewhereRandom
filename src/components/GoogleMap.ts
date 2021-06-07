@@ -1,20 +1,18 @@
 import "./googleMap.css";
 import { $ } from "../utilities/dom";
 
-export default class GoogleMap {
-  public map: google.maps.Map;
+export default function GoogleMap(): google.maps.Map {
+  let map = <google.maps.Map>null;
 
-  constructor() {
-    this.init();
-  }
-
-  private init(): void {
-    this.map = new google.maps.Map($("#nav"), {
+  const init = (): void => {
+    map = new google.maps.Map($("#nav"), {
       zoom: 8,
     });
-    const panorama = new google.maps.StreetViewPanorama($("#pano"));
-    this.map.setStreetView(panorama);
 
-    console.log(this.map);
-  }
+    const panorama = new google.maps.StreetViewPanorama($("#pano"));
+    map.setStreetView(panorama);
+  };
+
+  init();
+  return map;
 }

@@ -1,18 +1,13 @@
 import { genElem } from "../utilities/dom";
 import "./searchInput.css";
 
-export default class SearchInput {
-  private $parentElem: HTMLElement;
-  private onInputChanged;
-
-  constructor($elem: HTMLElement, onInputChanged) {
-    this.$parentElem = $elem;
-    this.onInputChanged = onInputChanged;
-    this.init();
-  }
-
-  private init() {
-    const $searchInputWrapper = genElem(this.$parentElem, {
+export default function SearchInput(
+  $elem: HTMLElement,
+  onInputChanged: (event: KeyboardEvent) => void
+): void {
+  const $parentElem: HTMLElement = $elem;
+  const init = (): void => {
+    const $searchInputWrapper = genElem($parentElem, {
       tagName: "div",
       className: "search_bar_input_wrapper",
     });
@@ -28,6 +23,8 @@ export default class SearchInput {
       src: "./search.svg",
     });
 
-    $searchInput.addEventListener("keyup", this.onInputChanged);
-  }
+    $searchInput.addEventListener("keyup", onInputChanged);
+  };
+
+  init();
 }

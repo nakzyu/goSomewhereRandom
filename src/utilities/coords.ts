@@ -8,6 +8,7 @@
 import { MapMetadata } from "../types/Map";
 import { Store } from "../types/Store";
 import { COUNTRIES } from "./constants";
+import { store } from "./store";
 
 export const getRandomLatLng = (
   coordsBoundingBox: number[]
@@ -20,16 +21,16 @@ export const getNearestPanorama = (
   coords: google.maps.LatLngLiteral,
   svs: google.maps.StreetViewService,
   svp: google.maps.StreetViewPanorama,
-  radius
-): void => {
+  radius: number
+): void =>
   svs.getPanoramaByLocation(coords, radius, (data) => {
     if (!data) {
       getNearestPanorama(coords, svs, svp, (radius *= 10));
       return;
     }
     svp.setPosition(data.location.latLng);
+    store.updateCurLoc(data.location.description);
   });
-};
 
 export const setGoogleMapToRandomCoords = (
   mapMetaData: MapMetadata,
