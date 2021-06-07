@@ -4,7 +4,6 @@ import {
   getRandomMapMeta,
   setGoogleMapToRandomCoords,
 } from "./utilities/coords";
-
 import Panel from "./components/panel";
 import { store } from "./utilities/store";
 

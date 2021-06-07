@@ -1,5 +1,6 @@
 import { MapMetadata } from "../types/Map";
 import { genElem } from "../utilities/dom";
+
 import "./searchResult.css";
 export default function SearchResult(
   $elem: HTMLElement,

@@ -4,11 +4,10 @@
 // ): string => {
 //   return `https://maps.google.com/?q=${coords.lat},${coords.lng}&ll=${coords.lat},${coords.lng}&z=${zoom}`;
 // };
-
-import { MapMetadata } from "../types/Map";
-import { Store } from "../types/Store";
 import { COUNTRIES } from "./constants";
 import { store } from "./store";
+import { MapMetadata } from "../types/Map";
+import { Store } from "../types/Store";
 
 export const getRandomLatLng = (
   coordsBoundingBox: number[]

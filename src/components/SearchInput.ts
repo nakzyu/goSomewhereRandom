@@ -1,5 +1,5 @@
-import { genElem } from "../utilities/dom";
 import "./searchInput.css";
+import { genElem } from "../utilities/dom";
 
 export default function SearchInput(
   $elem: HTMLElement,

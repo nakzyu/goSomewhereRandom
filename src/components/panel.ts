@@ -1,11 +1,13 @@
+import SearchBar from "./searchBar";
 import {
   getRandomMapMeta,
   setGoogleMapToRandomCoords,
 } from "../utilities/coords";
-import SearchBar from "./searchBar";
-import "./panel.css";
 import { store } from "../utilities/store";
 import { $, genElem } from "../utilities/dom";
+
+import "./panel.css";
+
 export default function Panel(): void {
   const init = (): void => {
     const $panelDiv = $(".panel");

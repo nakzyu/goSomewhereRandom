@@ -1,6 +1,6 @@
+import { $ } from "./dom";
 import { MapMetadata } from "../types/Map";
 import { Store } from "../types/Store";
-import { $ } from "./dom";
 
 export const store: Store = {
   map: <google.maps.Map>null,
