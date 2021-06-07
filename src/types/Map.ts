@@ -12,4 +12,5 @@ export type MapMetadata = {
    * lng2, lat2 = bottom right corner coords of country
    */
   coordsBoundingBox: number[];
+  lowerCased?: string;
 };

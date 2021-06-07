@@ -1,5 +1,4 @@
 import { MapMetadata } from "../types/Map";
-import { Store } from "../types/Store";
 import { COUNTRIES } from "../utilities/constants";
 import { setGoogleMapToRandomCoords } from "../utilities/coords";
 import { store } from "../utilities/store";
@@ -9,29 +8,51 @@ import { genElem } from "../utilities/dom";
 
 import "./searchBar.css";
 
-export default class SearchBar {
-  private $parentElem: HTMLElement;
-  private countries: ReadonlyArray<MapMetadata>;
-  private searchResult: SearchResult;
-  private store: Store;
+export default function SearchBar($elem: HTMLElement): void {
+  const $parentElem: HTMLElement = $elem;
+  const $wrapper = genElem($parentElem, {
+    tagName: "div",
+    className: "search_bar_wrapper",
+  });
+  let countries: ReadonlyArray<MapMetadata> = [];
+  let updateSearchResult;
 
-  constructor($elem) {
-    this.$parentElem = $elem;
-    this.store = store;
-    this.init();
-  }
+  const onCountrySelected = ({ target }): void => {
+    if (target.tagName === "LI") {
+      const country = countries.find(({ name }) => name == target.innerText);
+      setGoogleMapToRandomCoords((store.meta = country), store);
+    }
+  };
 
-  private async init(): Promise<void> {
-    const $wrapper = genElem(this.$parentElem, {
-      tagName: "div",
-      className: "search_bar_wrapper",
-    });
-    this.countries = this.mapCountriesNamesToSearch(COUNTRIES);
+  const onInputChanged = ({ target }): void => {
+    // if no character typed, return nothing
+    if (!target.value) {
+      updateSearchResult([]);
+      return;
+    }
+    updateSearchResult(
+      countries.filter(({ lowerCased }) =>
+        lowerCased.includes(target.value.toLowerCase())
+      )
+    );
+  };
+
+  const mapCountriesNamesToSearch = (
+    countries: ReadonlyArray<MapMetadata>
+  ): ReadonlyArray<MapMetadata> =>
+    countries.map((country) => ({
+      ...country,
+      name: country.name,
+      lowerCased: country.name.toLowerCase(),
+    }));
+
+  const init = async (): Promise<void> => {
+    countries = mapCountriesNamesToSearch(COUNTRIES);
 
     const loc = await (<Promise<google.maps.StreetViewLocation>>(
       new Promise((resolve) => {
         setTimeout(() => {
-          return resolve(this.store.map.getStreetView().getLocation());
+          return resolve(store.map.getStreetView().getLocation());
         }, 2000);
       })
     ));
@@ -42,39 +63,10 @@ export default class SearchBar {
       className: "search_bar_cur_location",
     });
 
-    new SearchInput($wrapper, this.onInputChanged.bind(this));
-    this.searchResult = new SearchResult(
-      $wrapper,
-      this.onCountrySelected.bind(this)
-    );
-  }
+    SearchInput($wrapper, onInputChanged);
 
-  private onInputChanged({ target }): void {
-    // if no character typed, return nothing
-    if (!target.value) {
-      this.searchResult.update([]);
-      return;
-    }
-    this.searchResult.update(
-      this.countries.filter(({ name }) => name.includes(target.value))
-    );
-  }
+    updateSearchResult = SearchResult($wrapper, onCountrySelected);
+  };
 
-  private onCountrySelected({ target }): void {
-    if (target.tagName === "LI") {
-      const country = this.countries.find(
-        ({ name }) => name == target.innerText
-      );
-      setGoogleMapToRandomCoords((this.store.meta = country), this.store);
-    }
-  }
-
-  private mapCountriesNamesToSearch(
-    countries: ReadonlyArray<MapMetadata>
-  ): ReadonlyArray<MapMetadata> {
-    return countries.map((country) => ({
-      ...country,
-      name: country.name.toLowerCase(),
-    }));
-  }
+  init();
 }

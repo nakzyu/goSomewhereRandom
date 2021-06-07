@@ -6,19 +6,11 @@ import SearchBar from "./searchBar";
 import "./panel.css";
 import { store } from "../utilities/store";
 import { $, genElem } from "../utilities/dom";
-import { Store } from "../types/Store";
-export default class Panel {
-  private store: Store;
-
-  constructor() {
-    this.store = store;
-    this.init();
-  }
-
-  private init(): void {
+export default function Panel(): void {
+  const init = (): void => {
     const $panelDiv = $(".panel");
 
-    new SearchBar($panelDiv);
+    SearchBar($panelDiv);
 
     const $buttonWrapper = genElem($panelDiv, {
       tagName: "div",
@@ -32,5 +24,7 @@ export default class Panel {
     }).addEventListener("click", () => {
       setGoogleMapToRandomCoords(getRandomMapMeta(), store);
     });
-  }
+  };
+
+  init();
 }
