@@ -3,8 +3,7 @@ import Loader from "./utilities/mapLoader";
 import {
   getRandomMapMeta,
   setGoogleMapToRandomCoords,
-} from "./utilities/coords";
-
+} from "./utilities/coordsHelper";
 import Panel from "./components/panel";
 import { store } from "./utilities/store";
 

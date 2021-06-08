@@ -1,29 +1,38 @@
+import SearchBar from "./searchBar";
 import {
   getRandomMapMeta,
   setGoogleMapToRandomCoords,
-} from "../utilities/coords";
-import SearchBar from "./searchBar";
-import "./panel.css";
+} from "../utilities/coordsHelper";
 import { store } from "../utilities/store";
-import { $, genElem } from "../utilities/dom";
+import { $, genElem } from "../utilities/domHelper";
+
+import "./panel.css";
+
 export default function Panel(): void {
   const init = (): void => {
     const $panelDiv = $(".panel");
 
-    SearchBar($panelDiv);
-
-    const $buttonWrapper = genElem($panelDiv, {
-      tagName: "div",
-      className: "button_wrapper",
+    const $button = genElem($panelDiv, {
+      tagName: "button",
+      className: "next_button",
     });
 
-    genElem($buttonWrapper, {
-      tagName: "button",
-      className: "button",
-      innerText: "Next",
-    }).addEventListener("click", () => {
+    $button.addEventListener("click", () => {
       setGoogleMapToRandomCoords(getRandomMapMeta(), store);
     });
+
+    genElem($button, {
+      tagName: "p",
+      innerText: "Go",
+    });
+
+    genElem($button, {
+      tagName: "img",
+      className: "img_dice",
+      src: "/dice.gif",
+    });
+
+    SearchBar($panelDiv);
   };
 
   init();

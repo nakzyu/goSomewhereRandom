@@ -1,5 +1,5 @@
 import "./googleMap.css";
-import { $ } from "../utilities/dom";
+import { $ } from "../utilities/domHelper";
 
 export default function GoogleMap(): google.maps.Map {
   let map = <google.maps.Map>null;
@@ -7,9 +7,14 @@ export default function GoogleMap(): google.maps.Map {
   const init = (): void => {
     map = new google.maps.Map($("#nav"), {
       zoom: 8,
+      mapTypeControl: false,
+      streetViewControl: true,
     });
 
-    const panorama = new google.maps.StreetViewPanorama($("#pano"));
+    const panorama = new google.maps.StreetViewPanorama($("#pano"), {
+      addressControl: false,
+    });
+
     map.setStreetView(panorama);
   };
 

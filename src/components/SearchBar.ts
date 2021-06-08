@@ -1,10 +1,10 @@
 import { MapMetadata } from "../types/Map";
 import { COUNTRIES } from "../utilities/constants";
-import { setGoogleMapToRandomCoords } from "../utilities/coords";
+import { setGoogleMapToRandomCoords } from "../utilities/coordsHelper";
 import { store } from "../utilities/store";
 import SearchInput from "./searchInput";
 import SearchResult from "./searchResult";
-import { genElem } from "../utilities/dom";
+import { genElem } from "../utilities/domHelper";
 
 import "./searchBar.css";
 
@@ -48,22 +48,8 @@ export default function SearchBar($elem: HTMLElement): void {
       lowerCased: country.name.toLowerCase(),
     }));
 
-  const init = async (): Promise<void> => {
+  const init = (): void => {
     countries = mapCountriesNamesToSearch(COUNTRIES);
-
-    const loc = await (<Promise<google.maps.StreetViewLocation>>(
-      new Promise((resolve) => {
-        setTimeout(() => {
-          return resolve(store.map.getStreetView().getLocation());
-        }, 2000);
-      })
-    ));
-
-    genElem($wrapper, {
-      tagName: "div",
-      innerText: loc.shortDescription,
-      className: "search_bar_cur_location",
-    });
 
     SearchInput($wrapper, onInputChanged);
 
