@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "parcel index.html"
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.11.4",
