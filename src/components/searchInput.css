@@ -1,12 +1,15 @@
 .search_bar_input_wrapper {
   display: flex;
+  width: 100%;
 }
 
 .search_bar_input_wrapper:focus {
   color: tomato;
 }
 .search_bar_input {
+  width: 90%;
   flex: 1;
+  margin: 0;
   border: none;
 }
 
@@ -16,7 +19,7 @@
 
 .search_bar_img {
   background: white;
-  display: block;
+
   object-fit: cover;
   width: 10%;
   height: 10%; /* set to 'auto' in IE11 to avoid distortions */
