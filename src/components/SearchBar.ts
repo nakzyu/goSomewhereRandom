@@ -50,7 +50,6 @@ export default function SearchBar($elem: HTMLElement): void {
 
   const init = (): void => {
     countries = mapCountriesNamesToSearch(COUNTRIES);
-
     SearchInput($wrapper, onInputChanged);
 
     updateSearchResult = SearchResult($wrapper, onCountrySelected);
