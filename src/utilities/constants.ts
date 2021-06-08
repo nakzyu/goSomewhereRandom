@@ -220,14 +220,14 @@ export const COUNTRIES: ReadonlyArray<MapMetadata> = [
   },
   {
     alpha2: "CD",
-    name: "Congo coordsBoundingBox:[Kinshasa)",
+    name: "Congo Kinshasa",
     coordsBoundingBox: [
       12.1823368669, -13.2572266578, 31.1741492042, 5.25608775474,
     ],
   },
   {
     alpha2: "CG",
-    name: "Congo coordsBoundingBox:[Brazzaville)",
+    name: "Congo Brazzaville",
     coordsBoundingBox: [
       11.0937728207, -5.03798674888, 18.4530652198, 3.72819651938,
     ],
