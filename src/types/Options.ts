@@ -7,4 +7,5 @@ export type Options = {
   className?: string;
   id?: string;
   src?: string;
+  placeholder?: string;
 };
