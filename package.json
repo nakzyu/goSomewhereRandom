@@ -4,8 +4,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.11.4",
-    "parcel-bundler": "^1.12.5"
+    "@googlemaps/js-api-loader": "^1.11.4"
   },
   "devDependencies": {
     "@types/googlemaps": "^3.43.3",
@@ -13,6 +12,7 @@
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "eslint": "^7.28.0",
+    "parcel-bundler": "^1.12.5",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "typescript": "^4.2.4"
   },
