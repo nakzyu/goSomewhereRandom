@@ -8,8 +8,6 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
-.search_bar_result::-webkit-scrollbar {
-}
 
 .search_bar_result:hover {
   cursor: pointer;

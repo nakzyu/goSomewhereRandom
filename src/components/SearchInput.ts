@@ -15,9 +15,10 @@ export default function SearchInput(
     const $searchInput = <HTMLInputElement>genElem($searchInputWrapper, {
       tagName: "input",
       className: "search_bar_input",
+      placeholder: "or type here to search",
     });
 
-    <HTMLImageElement>genElem($searchInputWrapper, {
+    genElem($searchInputWrapper, {
       tagName: "img",
       className: "search_bar_img",
       src: "./search.svg",
