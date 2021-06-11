@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel index.html"
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.11.4"
@@ -21,10 +21,10 @@
       "src/images"
     ]
   },
-  "name": "vanilaRandomTrip",
+  "name": "goSomewhereRandom",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/nakzyu/vanilaRandomTrip.git",
+  "repository": "https://github.com/nakzyu/goSomewhereRandom.git",
   "author": "nakzyu <nakzyu@gmail.com>",
   "license": "MIT"
 }
