@@ -33,21 +33,6 @@ export default function Panel(): void {
     });
 
     SearchBar($panelDiv);
-
-    const $a = genElem($panelDiv, {
-      tagName: "a",
-      href: `https://www.hotelscombined.com?a_aid=${process.env.HOTELS_COMBINED_KEY}`,
-
-      target: "_blank",
-      rel: "nofollow",
-    });
-
-    genElem($a, {
-      tagName: "img",
-      className: "affiliate_img",
-      src: "https://assets.portalhc.com/banners/affiliate/en/300x250_TakeABreak.jpg",
-      border: "0",
-    });
   };
 
   init();
