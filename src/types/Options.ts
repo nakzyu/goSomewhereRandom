@@ -8,4 +8,8 @@ export type Options = {
   id?: string;
   src?: string;
   placeholder?: string;
+  href?: string;
+  target?: string;
+  rel?: string;
+  border?: string;
 };

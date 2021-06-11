@@ -1,4 +1,3 @@
-import { $ } from "./domHelper";
 import { MapMetadata } from "../types/Map";
 import { Store } from "../types/Store";
 
