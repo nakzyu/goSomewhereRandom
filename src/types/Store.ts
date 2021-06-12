@@ -5,5 +5,4 @@ export type Store = {
   streetViewSource: google.maps.StreetViewSource;
   streetViewService: google.maps.StreetViewService;
   meta: MapMetadata;
-  updateCurLoc: (string) => void;
 };

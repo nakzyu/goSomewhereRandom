@@ -1,11 +1,5 @@
-// export const getGoogleMapsLink = (
-//   coords: google.maps.LatLngLiteral,
-//   zoom = 0
-// ): string => {
-//   return `https://maps.google.com/?q=${coords.lat},${coords.lng}&ll=${coords.lat},${coords.lng}&z=${zoom}`;
-// };
 import { COUNTRIES } from "./constants";
-import { store } from "./store";
+import { $ } from "./domHelper";
 import { MapMetadata } from "../types/Map";
 import { Store } from "../types/Store";
 
@@ -28,7 +22,7 @@ export const getNearestPanorama = (
       return;
     }
     svp.setPosition(data.location.latLng);
-    store.updateCurLoc(data.location.description);
+    updateCurLoc(data.location.description);
   });
 
 export const setGoogleMapToRandomCoords = (
@@ -53,4 +47,9 @@ export const getRandomMapMeta = (): MapMetadata =>
 const getRandomNumberBetweenRange = (from: number, to: number): number => {
   const difs = to - from;
   return from + difs * Math.random();
+};
+
+export const updateCurLoc = (description: string): void => {
+  $(".search_bar_cur_location").innerText =
+    description === "" ? "No Text" : description;
 };

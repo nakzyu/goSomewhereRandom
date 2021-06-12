@@ -1,4 +1,3 @@
-import { $ } from "./domHelper";
 import { MapMetadata } from "../types/Map";
 import { Store } from "../types/Store";
 
@@ -7,8 +6,4 @@ export const store: Store = {
   streetViewService: <google.maps.StreetViewService>null,
   meta: <MapMetadata>null,
   streetViewSource: <google.maps.StreetViewSource>null,
-  updateCurLoc(description: string): void {
-    $(".search_bar_cur_location").innerText =
-      description === "" ? "No Text" : description;
-  },
 };
