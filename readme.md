@@ -1,7 +1,5 @@
 # Go Somewhere Random
 
-https://www.gosomewhererandom.com/
-
 this is boilerplate for random street view service with google maps api.
 project is on production.
 
