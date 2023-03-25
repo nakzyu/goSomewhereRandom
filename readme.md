@@ -1,11 +1,11 @@
 # Go Somewhere Random
 
-this is boilerplate for random street view service with google maps api.
+This is boilerplate for random street view service with google maps api.
 project is on production.
 
-there is somewhat ambiguous point using two maps in single page, this project will help sovle that problem.
+There is somewhat ambiguous point using two maps in single page, this project will help sovle that problem.
 
-linked with google analytics, hotels combined affiliate, so you can use this for general understanding how to bind all these things up.
+Linked with google analytics, hotels combined affiliate, so you can use this for general understanding how to bind all these things up.
 
 ## Dependencies
 
